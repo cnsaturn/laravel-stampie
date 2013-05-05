@@ -25,7 +25,14 @@ Add the following to your application/bundles.php file:
 ),
 ```
 
+## Configuration
+
+* For Postmark, put your Postmark API key in the `config/postmark.php`.
+* For other email service providers, create and build your own config file and place it in the `config/` directory. Remember to adjust the [IoC container closure](http://laravel.com/docs/ioc) in the file `start.php` accordingly.
+
 ## Example Usage
+
+The following use [Postmark](http://postmarkapp.com/) as the example email provider.
 
 ```php
 // Define your message metadata class and put it in wherever you like
