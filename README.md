@@ -5,7 +5,7 @@ A laravel bundle wraps the [Stampie Library](https://github.com/henrikbjorn/Stam
 
 ## Dependencies
 
-To manipulate the underlying HTTP requests as mentioned in the [Stampie document](https://github.com/henrikbjorn/Stampie#providers), [Buzz](http://github.com/kriswallsmith/Buzz) and [Guzzle](http://guzzlephp.org) should be installed and loaded before this bundle can work as expected. I personally recommend install [Laravel Buzz Bundle](https://github.com/cnsaturn/laravel-buzz) before we move on.
+To manipulate the underlying HTTP requests as mentioned in the [Stampie document](https://github.com/henrikbjorn/Stampie#providers), [Buzz](http://github.com/kriswallsmith/Buzz) or [Guzzle](http://guzzlephp.org) should be installed and loaded before this bundle can work as expected. I personally recommend install [Laravel Buzz Bundle](https://github.com/cnsaturn/laravel-buzz) before we move on.
 
 ## Installation
 
