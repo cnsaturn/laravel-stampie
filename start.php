@@ -9,7 +9,7 @@ Autoloader::namespaces(array(
 IoC::register('postmark', function()
 {
     // Load the default settings, if they exist.
-    $token = Config::get('mailer::postmark', array());
+    $token = Config::get('stampie::postmark', array());
 
     // Return the instance for later usage
     $adapter = new Stampie\Adapter\Buzz(new Buzz\Browser());
