@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Laravel Stampie Bundle by cnsaturn</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Laravel Stampie Bundle</h1>
+        <p>The laravel bundle that wraps the Stampie Library which provides API Wrapper for different email providers such as Postmark and SendGrid.</p>
+
+        <p class="view"><a href="https://github.com/cnsaturn/laravel-stampie">View the Project on GitHub <small>cnsaturn/laravel-stampie</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/cnsaturn/laravel-stampie/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/cnsaturn/laravel-stampie/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/cnsaturn/laravel-stampie">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>Laravel Stampie Bundle</h1>
+
+<p>A laravel bundle wraps the <a href="https://github.com/henrikbjorn/Stampie">Stampie Library</a> which provides API Wrapper for different email providers such as <a href="http://postmarkapp.com/">Postmark</a> and <a href="http://sendgrid.com/">SendGrid</a>.</p>
+
+<h2>Dependencies</h2>
+
+<p>To manipulate the underlying HTTP requests as mentioned in the <a href="https://github.com/henrikbjorn/Stampie#providers">Stampie document</a>, <a href="http://github.com/kriswallsmith/Buzz">Buzz</a> or <a href="http://guzzlephp.org">Guzzle</a> should be installed and loaded before this bundle can work as expected. I personally recommend install <a href="https://github.com/cnsaturn/laravel-buzz">Laravel Buzz Bundle</a> before we move on.</p>
+
+<h2>Installation</h2>
+
+<p>You can install this bundle by running the following CLI command:</p>
+
+<div class="highlight"><pre><span class="nv">$php</span> <span class="nx">artisan</span> <span class="nx">bundle</span><span class="o">:</span><span class="nx">install</span> <span class="nx">stampie</span>
+</pre></div>
+
+<h2>Bundle Registration</h2>
+
+<p>Add the following to your application/bundles.php file:</p>
+
+<div class="highlight"><pre><span class="s1">'stampie'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'auto'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<span class="p">),</span>
+</pre></div>
+
+<h2>Configuration</h2>
+
+<ul>
+<li>For Postmark, put your Postmark API key in the <code>config/postmark.php</code>.</li>
+<li>For other email service providers, create and build your own config file and place it in the <code>config/</code> directory. Remember to adjust the <a href="http://laravel.com/docs/ioc">IoC container closure</a> in the file <code>start.php</code> accordingly.</li>
+</ul><h2>Example Usage</h2>
+
+<p>The following use <a href="http://postmarkapp.com/">Postmark</a> as the example email provider.</p>
+
+<div class="highlight"><pre><span class="c1">// Define your message metadata class and put it in wherever you like</span>
+<span class="k">class</span> <span class="nc">Message</span> <span class="k">extends</span> <span class="nx">\Stampie\Message</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getFrom</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s1">'alias@domain.tld'</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSubject</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s1">'You are trying out Stampie'</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getText</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="s1">'So what do you think about it?'</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Resolve your mailer from Laravel Ioc Container</span>
+<span class="c1">// Here we use postmark as an example</span>
+<span class="nv">$postmark</span> <span class="o">=</span> <span class="nx">IoC</span><span class="o">::</span><span class="na">resolve</span><span class="p">(</span><span class="s1">'postmark'</span><span class="p">);</span>
+
+<span class="c1">// Returns Boolean true on success or throws an HttpException for error</span>
+<span class="c1">// messages not recognized by SendGrid api or ApiException for known errors.</span>
+<span class="nv">$postmark</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">(</span><span class="k">new</span> <span class="nx">Message</span><span class="p">(</span><span class="s1">'hello@yoozi.cn'</span><span class="p">));</span>
+</pre></div>
+
+<p>More infomation about how to use Stampie <a href="https://github.com/henrikbjorn/Stampie">can be found here</a>.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/cnsaturn">cnsaturn</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
