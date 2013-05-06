@@ -1,0 +1,36 @@
+{
+    "name" : "henrikbjorn/stampie",
+    "description" : "A Postmarkapp API Mailer",
+    "homepage" : "https://github.com/henrikbjorn/Stampie",
+    "type" : "library",
+    "license" : "MIT",
+    "authors" : [
+        {
+            "name" : "Henrik Bjornskov",
+            "email" : "henrik@bjrnskov.dk",
+            "homepage" : "http://henrik.bjrnskov.dk"
+        }
+    ],
+    "autoload" : {
+        "psr-0" : {
+            "Stampie"        : "lib/"
+        }
+    },
+    "require" : {
+        "php"                : ">=5.3.3"
+    },
+    "require-dev" : {
+        "kriswallsmith/buzz" : "*",
+        "guzzle/guzzle"      : "*"
+    },
+    "suggest" : {
+        "stof/stampie-extra" : "Extensions for Stampie",
+        "kriswallsmith/buzz" : "Lightweight HTTP Client",
+        "guzzle/guzzle"      : "HTTP Client and Framework for building RESTful webservice clients"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.8.x-dev"
+        }
+    }
+}
